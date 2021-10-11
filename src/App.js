@@ -5,6 +5,7 @@ import Main from './components/main/Main';
 import NotFound from './components/common/NotFound';
 import User from './components/user/User';
 import reducer from './components/reducers/reducer';
+import Pay from './components/pay/Pay';
 
 // localStorage에서 사용자 이름 받아오기
 const initialState = {
@@ -25,7 +26,7 @@ function App() {
                     <Switch>
                         <Route path="/" component={Main} exact />
                         <Route path="/user" component={User} exact />
-                        {/* <Route path="/add" component={Pay} /> */}
+                        <Route path="/add" component={Pay} />
                         <Route path={'*'} component={NotFound} />
                     </Switch>
                 </Router>

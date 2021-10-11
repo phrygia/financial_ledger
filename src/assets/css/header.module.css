@@ -21,4 +21,9 @@
     background-color: transparent;
     font-size: 1.5rem;
 }
+.header > .btn {
+    display: inline-block;
+    margin-top: 3px;
+    font-size: 1.4rem;
+}
 /* .header button/ */
