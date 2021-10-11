@@ -1,0 +1,31 @@
+.calendar_container {
+  position: absolute;
+  left: 0;
+  top: 50px;
+  width: 100%;
+  padding: 0 20px;
+}
+.calendar_container > .calendar_ym {
+  display: flex;
+}
+.calendar_container > ul {
+  display: flex;
+  flex-wrap: wrap;
+  height: 40vh;
+}
+.calendar_container > ul > li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% / 7);
+  list-style: none;
+  cursor: pointer;
+}
+.calendar_container > ul > li.day {
+  margin-bottom: 10px;
+  border-bottom: 1px solid #fff;
+  cursor: default;
+}
+.calendar_container > ul > li.today {
+  background-color: aqua;
+}

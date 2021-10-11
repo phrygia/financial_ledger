@@ -1,36 +1,63 @@
-import React, { useEffect, useState } from 'react';
-import style from '../../assets/css/calendar.module.css';
+import React, { useEffect, useState } from "react";
+import style from "../../assets/css/calendar.module.css";
 
-function Calendar() {
-	const date = new Date();
-	const getToday = date.toISOString().substring(0, 10);
-	const [yy, mm, dd] = getToday.split('-');
+const Calendar = (props) => {
+  const {
+    firstDate,
+    lastDate,
+    year,
+    month,
+    today,
+    prevCalendar,
+    nextCalendar,
+  } = props;
 
-	const [month, setMonth] = useState(new Date().getMonth() + 1);
-	const [calendarYM, setCalendarYM] = useState(`${yy}년 ${mm + 1}월`);
-	const [today, setToday] = useState(`현재 ${getToday}`);
-	//
+  const hasToday = new Date(year, month - 1);
+  const condition =
+    today.getFullYear() + today.getMonth() ===
+    hasToday.getFullYear() + hasToday.getMonth();
 
-	useEffect(() => {
-		setCalendarYM(`${date.getFullYear()}년 ${date.getMonth() + 1}월`);
-		setToday(
-			`현재 ${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
-		);
-	}, []);
+  const onClick = (e) => {
+    console.log(e.target.parentNode.childNodes);
+    e.target.classList.add("on");
+  };
 
-	const goToday = () => {};
-	return (
-		<div>
-			<div>
-				<p>{calendarYM}</p>
-				<p>{today}</p>
+  // 1일이 시작되는 칸을 맞추기 위한 빈칸
+  const blank = [...Array(firstDate.getDay())].map((v, i) => (
+    <li key={i}>{""}</li>
+  ));
 
-				{/* <button onClick={() => setMonth(month - 1)}>&lt;</button>
-				<button onClick={() => goToday()}></button>
-				<button onClick={() => setMonth(month + 1)}>&gt;</button> */}
-			</div>
-		</div>
-	);
-}
+  const list = [...Array(lastDate.getDate())].map((v, i) => (
+    <li
+      key={i}
+      onClick={onClick}
+      className={condition && i + 1 === today.getDate() ? `${style.today}` : ""}
+    >
+      {i + 1}
+    </li>
+  ));
+
+  const days = ["일", "월", "화", "수", "목", "금", "토"].map((v) => (
+    <li key={v} className={`${style.day}`}>
+      {v}
+    </li>
+  ));
+
+  return (
+    <div className={`${style.calendar_container}`}>
+      <div className={`${style.calendar_ym}`}>
+        <button onClick={() => prevCalendar()}>prev</button>
+        {year} <br />
+        {month}
+        <button onClick={nextCalendar}>next</button>
+      </div>
+      <ul>
+        {days}
+        {blank}
+        {list}
+      </ul>
+    </div>
+  );
+};
 
 export default Calendar;
