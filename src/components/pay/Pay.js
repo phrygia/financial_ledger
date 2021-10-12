@@ -6,7 +6,7 @@ import style from "../../assets/css/pay.module.css";
 function Pay() {
   return (
     <>
-      <Header />
+      <Header class="pay" />
       <section className={`${style.pay_container}`}>
         <FullCalendar />
         <ul className={`${style.pay_form}`}>
@@ -47,8 +47,10 @@ function Pay() {
             <label>금액</label>
             <input placeholder="금액을 입력하세요 (예: 18000)" />
           </li>
+          <li>
+            <button className={`${style.pay_confirm}`}>입력하기</button>
+          </li>
         </ul>
-        <button className={`${style.pay_confirm}`}>입력하기</button>
       </section>
     </>
   );

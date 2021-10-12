@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
 import style from "../../assets/css/calendar.module.css";
 
 const Calendar = (props) => {
@@ -12,14 +13,16 @@ const Calendar = (props) => {
     nextCalendar,
   } = props;
 
+  const [on, setOn] = useState("");
   const hasToday = new Date(year, month - 1);
   const condition =
     today.getFullYear() + today.getMonth() ===
     hasToday.getFullYear() + hasToday.getMonth();
+  const months = String(month).length === 1 ? `0${month}` : month;
 
-  const onClick = (e) => {
-    console.log(e.target.parentNode.childNodes);
-    e.target.classList.add("on");
+  const onClick = (i) => {
+    setOn(i);
+    console.log(year, month, i + 1);
   };
 
   // 1일이 시작되는 칸을 맞추기 위한 빈칸
@@ -30,10 +33,12 @@ const Calendar = (props) => {
   const list = [...Array(lastDate.getDate())].map((v, i) => (
     <li
       key={i}
-      onClick={onClick}
-      className={condition && i + 1 === today.getDate() ? `${style.today}` : ""}
+      onClick={() => onClick(i)}
+      className={`${
+        condition && i + 1 === today.getDate() ? style.today : ""
+      } ${on === i ? style.on : ""}`}
     >
-      {i + 1}
+      <input value={i + 1} readOnly />
     </li>
   ));
 
@@ -46,10 +51,15 @@ const Calendar = (props) => {
   return (
     <div className={`${style.calendar_container}`}>
       <div className={`${style.calendar_ym}`}>
-        <button onClick={() => prevCalendar()}>prev</button>
-        {year} <br />
-        {month}
-        <button onClick={nextCalendar}>next</button>
+        <button onClick={() => prevCalendar()}>
+          <MdArrowBackIos />
+        </button>
+        <p>
+          {year}. {months}
+        </p>
+        <button onClick={nextCalendar}>
+          <MdArrowForwardIos />
+        </button>
       </div>
       <ul>
         {days}

@@ -1,7 +1,8 @@
 .pay_container {
-  padding-top: 50px;
-  background-color: #999;
-  min-height: 100vh;
+  position: relative;
+  padding-top: 5px;
+  background-color: #526ee4;
+  min-height: calc(100vh - 60px);
 }
 .pay_container .pay_form {
   border-radius: 4rem 4rem 0 0;

@@ -8,11 +8,14 @@ import { store } from "../../App";
 import style from "../../assets/css/header.module.css";
 import Modal from "./Modal";
 
-function Header() {
+const Header = (props) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [state, dispatch] = useContext(store);
   const history = useHistory();
   const url = history.location.pathname;
+  const classes = props.class ? style[props.class] : "";
+
+  // console.log(props.class);
 
   const openModal = () => {
     setModalOpen(true);
@@ -31,13 +34,13 @@ function Header() {
   };
 
   return (
-    <header className={`${style.header}`}>
+    <header className={`${style.header} ${classes}`}>
       {url === "/add" ? (
         <>
-          <h1>새로운 거래내역</h1>
           <Link to={"/"} className={`${style.btn}`}>
             <IoArrowBack />
           </Link>
+          <h1>새로운 거래내역</h1>
         </>
       ) : (
         <>
@@ -71,6 +74,6 @@ function Header() {
       )}
     </header>
   );
-}
+};
 
 export default Header;
