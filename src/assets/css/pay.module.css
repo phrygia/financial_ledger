@@ -1,0 +1,13 @@
+.pay_container {
+  position: relative;
+  padding-top: 5px;
+  background-color: #526ee4;
+  min-height: calc(100vh - 60px);
+}
+.pay_container .pay_form {
+  border-radius: 4rem 4rem 0 0;
+  background-color: #fff;
+  position: relative;
+  z-index: 2;
+  top: 50vh;
+}
