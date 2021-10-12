@@ -1,45 +1,47 @@
 .header {
-  width: 100%;
-  padding: 0 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 0 20px;
 }
 .header.main {
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 50px;
-  z-index: 99;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #fff;
+    height: 50px;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
 }
 .header.pay {
-  height: 60px;
-  line-height: 60px;
-  text-align: center;
-  background-color: #526ee4;
+    z-index: 1;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    background-color: #526ee4;
 }
 .header.pay > h1 {
-  color: #fff;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
 }
 .header.pay > a {
-  position: absolute;
-  left: 17px;
-  color: #fff;
+    position: absolute;
+    left: 17px;
+    color: #fff;
 }
 .header > h1 {
-  font-size: 1.1rem;
+    font-size: 1.1rem;
 }
 .header > button {
-  margin-top: 5px;
-  border: 0;
-  outline: none;
-  background-color: transparent;
-  font-size: 1.5rem;
+    margin-top: 5px;
+    border: 0;
+    outline: none;
+    background-color: transparent;
+    font-size: 1.5rem;
 }
 .header > .btn {
-  display: inline-block;
-  margin-top: 3px;
-  font-size: 1.4rem;
+    display: inline-block;
+    margin-top: 3px;
+    font-size: 1.4rem;
 }
 /* .header button/ */

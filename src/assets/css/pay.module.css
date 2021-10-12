@@ -1,13 +1,58 @@
 .pay_container {
-  position: relative;
-  padding-top: 5px;
-  background-color: #526ee4;
-  min-height: calc(100vh - 60px);
+    position: relative;
+    padding-top: 5px;
+    background-color: #526ee4;
+    min-height: calc(100vh - 60px);
 }
 .pay_container .pay_form {
-  border-radius: 4rem 4rem 0 0;
-  background-color: #fff;
-  position: relative;
-  z-index: 2;
-  top: 50vh;
+    position: relative;
+    z-index: 2;
+    padding: 40px 25px 10px;
+    border-radius: 2rem 2rem 0 0;
+    background-color: #fff;
+}
+.pay_container .pay_form li {
+    margin-bottom: 20px;
+    list-style: none;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+.pay_container .pay_form li input {
+    height: 40px;
+    padding: 0 10px;
+    border-radius: 6px;
+    border: 0;
+    font-size: 0.8rem;
+}
+.pay_container .pay_form li > label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+.pay_container .pay_form li.date > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.pay_container .pay_form li.date > div > input {
+    width: calc(33.3% - 10px);
+    text-align: center;
+    background-color: #f1f1f1;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: 500;
+    /* border: 1px solid #ddd; */
+}
+.pay_container .pay_form li.date > div > input:read-only,
+.pay_container .pay_form li.date > div > input::placeholder {
+    color: #999;
+}
+.pay_container .pay_form li.kinds select {
+    width: 100%;
+    height: 40px;
+    padding: 0 10px;
+    outline: none;
+    border-radius: 6px;
+    border: 0;
+    background-color: #f1f1f1;
+    font-size: 0.8rem;
 }
