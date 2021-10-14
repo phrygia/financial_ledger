@@ -15,19 +15,18 @@ const Modal = (props) => {
       {open ? (
         <section>
           <div className={style.header}>
-            <button onClick={close}>
-              <IoMdClose />
-            </button>
+            {close && (
+              <button onClick={close}>
+                <IoMdClose />
+              </button>
+            )}
             <Icon color="#f87e50" />
             <h1>{header}</h1>
             <p>{props.children}</p>
           </div>
           <div className={style.btn}>
-            <button onClick={confirm}>{agree}</button>
-            <button onClick={edit}>{editText}</button>
-            {/* <button className="close" onClick={close}>
-                            취소하기
-                        </button> */}
+            {agree && <button onClick={confirm}>{agree}</button>}
+            {editText && <button onClick={edit}>{editText}</button>}
           </div>
         </section>
       ) : null}

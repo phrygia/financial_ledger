@@ -1,0 +1,16 @@
+.tab_container {
+  margin-top: 50px;
+}
+.book_list {
+  padding: 20px;
+}
+.book_list > li {
+}
+.book_list > li.same {
+}
+.book_list > li > ul {
+  width: 100%;
+  display: flex;
+}
+.book_list > li > ul > li {
+}

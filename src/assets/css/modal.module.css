@@ -5,7 +5,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 99;
+  z-index: 999;
   background-color: rgba(0, 0, 0, 0.6);
 }
 .modal button {
@@ -17,7 +17,7 @@
   min-width: 320px;
   max-width: 400px;
   margin: 0 auto;
-  padding: 20px 20px 10px;
+  padding: 20px;
   border-radius: 1rem;
   background-color: #fff;
   /* 팝업이 열릴때 스르륵 열리는 효과 */
@@ -53,16 +53,18 @@
 }
 .modal > section > .btn button {
   width: 100%;
-  height: 46px;
   font-size: 0.8rem;
   border-radius: 0.4rem;
 }
 .modal > section > .btn button:first-child {
-  margin: 25px 0 5px;
+  height: 46px;
+  margin-top: 25px;
   background-color: #f87e50;
   color: #fff;
 }
 .modal > section > .btn button:nth-child(2) {
+  margin-top: 13px;
+  height: 35px;
   background-color: transparent;
 }
 .modal.openModal {
