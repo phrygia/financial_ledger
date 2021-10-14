@@ -1,4 +1,4 @@
-import { SET_USER_NAME } from './types';
+import { SET_USER_NAME, ADD_MONEY_IFNO } from './types';
 
 const reducer = (state, action) => {
     switch (action.type) {
@@ -6,6 +6,10 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 user_name: action.user_name,
+            };
+        case ADD_MONEY_IFNO:
+            return {
+                money_list: [...state.money_list, action.data],
             };
         default:
             return state;

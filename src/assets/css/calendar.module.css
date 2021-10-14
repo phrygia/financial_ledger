@@ -6,6 +6,7 @@
     padding: 0 20px;
 }
 .calendar_container > .calendar_ym {
+    position: relative;
     width: 100%;
     height: 27px;
     display: flex;
@@ -13,11 +14,15 @@
     margin: 10px 0;
 }
 .calendar_container > .calendar_ym p {
+    position: absolute;
+    left: 50%;
+    top: 1px;
+    width: 100px;
+    margin-left: -50px;
     font-family: 'Poppins', sans-serif;
-    margin: 0 20px;
-    display: inline-block;
     color: #fff;
     font-size: 1.15rem;
+    text-align: center;
 }
 .calendar_container > .calendar_ym button {
     border: 0;

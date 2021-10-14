@@ -10,6 +10,9 @@ function Pay() {
     const [month, setMonth] = useState('');
     const [day, setDay] = useState('');
     const [selected, setSelected] = useState('food');
+    const [spending, setSpending] = useState('');
+    const [spendContent, setSpendContent] = useState('');
+    const [price, setPrice] = useState('');
 
     useEffect(() => {
         if (date) {
@@ -24,7 +27,38 @@ function Pay() {
 
     const handleChangeSelect = (e) => {
         setSelected(e.target.value);
-        console.log(e.target.value, selected);
+    };
+
+    const handleSpending = (e) => {
+        setSpending(e.target.value);
+    };
+
+    const handleSpendContent = (e) => {
+        setSpendContent(e.target.value);
+    };
+
+    const handlePrice = (e) => {
+        setPrice(e.target.value);
+    };
+
+    const handleSubmit = () => {
+        if (!date) return alert('날짜를 선택해주세요');
+        if (spending.length === 0) return alert('지출/수입을 선택해주세요');
+        if (spendContent.length === 0)
+            return alert('지출/수입 내용을 입력해주세요');
+        console.log(year, month, day, selected, spending, spendContent, price);
+        const userObj = {
+            date: year - month - day,
+            kinds: selected,
+            spending: spending,
+            spendContent: spendContent,
+            price: price,
+        // };
+        // let old_data = JSON.parse(localStorage.getItem('money_list'));
+        // let new_data = old_data.push(userObj);
+        // console.lof(new_data, old_data);
+        // // console.log(userObj);
+        // localStorage.setItem('money_list', JSON.stringify([new_data]));
     };
 
     return (
@@ -64,19 +98,53 @@ function Pay() {
                     <li className={`${style.content}`}>
                         <label>내용</label>
                         <div>
-                            <input id="" type="radio" value="" />
-                            <label htmlFor=""></label>
-                            <input id="" type="radio" value="" />
-                            <label htmlFor=""></label>
+                            <input
+                                id="spending"
+                                type="radio"
+                                name="condition"
+                                value="지출"
+                                onClick={handleSpending}
+                            />
+                            <label
+                                htmlFor="spending"
+                                className={spending === '지출' ? style.on : ''}
+                            >
+                                지출
+                            </label>
+                            <input
+                                id="income"
+                                type="radio"
+                                name="condition"
+                                value="수입"
+                                onClick={handleSpending}
+                            />
+                            <label
+                                htmlFor="income"
+                                className={spending === '수입' ? style.on : ''}
+                            >
+                                수입
+                            </label>
                         </div>
-                        <input placeholder="내용을 입력하세요 (예: 도서 구입)" />
+                        <input
+                            onChange={handleSpendContent}
+                            value={spendContent}
+                            placeholder="내용을 입력하세요 (예: 도서 구입)"
+                        />
                     </li>
-                    <li className={`${style.ptice}`}>
+                    <li className={`${style.price}`}>
                         <label>금액</label>
-                        <input placeholder="금액을 입력하세요 (예: 18000)" />
+                        <input
+                            onChange={handlePrice}
+                            value={price}
+                            type="number"
+                            placeholder="금액을 입력하세요 (예: 18000)"
+                        />
                     </li>
                     <li className={`${style.send}`}>
-                        <button className={`${style.pay_confirm}`}>
+                        <button
+                            onClick={handleSubmit}
+                            className={`${style.pay_confirm}`}
+                        >
                             입력하기
                         </button>
                     </li>

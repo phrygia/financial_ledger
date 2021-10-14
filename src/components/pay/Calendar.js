@@ -22,7 +22,7 @@ const Calendar = (props) => {
         today.getFullYear() + today.getMonth() ===
         hasToday.getFullYear() + hasToday.getMonth();
     const months = String(month).length === 1 ? `0${month}` : month;
-    // console.log();
+
     useEffect(() => {
         setCalendarHeight(calendar.current.clientHeight + 55);
     }, [month]);
@@ -64,9 +64,11 @@ const Calendar = (props) => {
                 <p>
                     {year}. {months}
                 </p>
-                <button onClick={nextCalendar}>
-                    <MdArrowForwardIos />
-                </button>
+                {!condition && (
+                    <button onClick={nextCalendar}>
+                        <MdArrowForwardIos />
+                    </button>
+                )}
             </div>
             <ul>
                 {days}
