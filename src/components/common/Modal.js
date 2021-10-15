@@ -10,7 +10,7 @@ const Modal = (props) => {
   return (
     // 모달이 열릴때 openModal 클래스가 생성된다.
     <div
-      className={open ? `${style.openModal} ${style.modal}` : `${style.modal}`}
+      className={open ? `${style['openModal']} ${style['modal']}` : `${style.['modal']}`}
     >
       {open ? (
         <section>
@@ -20,7 +20,7 @@ const Modal = (props) => {
                 <IoMdClose />
               </button>
             )}
-            <Icon color="#f87e50" />
+            <Icon color="#f55c34" />
             <h1>{header}</h1>
             <p>{props.children}</p>
           </div>

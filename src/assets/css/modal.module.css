@@ -6,7 +6,7 @@
   bottom: 0;
   left: 0;
   z-index: 999;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 .modal button {
   cursor: pointer;
@@ -59,13 +59,17 @@
 .modal > section > .btn button:first-child {
   height: 46px;
   margin-top: 25px;
-  background-color: #f87e50;
-  color: #fff;
+  background-color: #262439;
+  color: #f55c34;
+  font-weight: 700;
 }
 .modal > section > .btn button:nth-child(2) {
   margin-top: 13px;
-  height: 35px;
+  height: 42px;
   background-color: transparent;
+  font-weight: 700;
+  border: 1px solid #f55c34;
+  color: #f55c34;
 }
 .modal.openModal {
   display: flex;

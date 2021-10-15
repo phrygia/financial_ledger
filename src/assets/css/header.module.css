@@ -18,7 +18,7 @@
   height: 60px;
   line-height: 60px;
   text-align: center;
-  background-color: #526ee4;
+  background-color: #262439;
 }
 .header.pay > h1 {
   color: #fff;
@@ -30,7 +30,7 @@
   color: #fff;
 }
 .header > h1 {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 .header > button {
   margin-top: 5px;

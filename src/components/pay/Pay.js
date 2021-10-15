@@ -73,13 +73,13 @@ function Pay() {
   return (
     <>
       <Header class="pay" />
-      <section className={`${style.pay_container} ${login}`}>
+      <section className={`${style["pay_container"]} ${login}`}>
         <FullCalendar setDate={setDate} setCalendarHeight={setCalendarHeight} />
         <ul
-          className={`${style.pay_form}`}
+          className={style["pay_form"]}
           style={{ marginTop: `${calendarHeight}px` }}
         >
-          <li className={`${style.date}`}>
+          <li className={style["date"]}>
             <label>날짜</label>
             <div>
               <input value={year} placeholder="년" readOnly />
@@ -87,7 +87,7 @@ function Pay() {
               <input value={day} placeholder="일" readOnly />
             </div>
           </li>
-          <li className={`${style.kinds}`}>
+          <li className={style["kinds"]}>
             <label>지출형태</label>
             <select onChange={handleChangeSelect} value={selected}>
               <option value="food">식비</option>
@@ -101,7 +101,7 @@ function Pay() {
               <option value="exercise">운동</option>
             </select>
           </li>
-          <li className={`${style.content}`}>
+          <li className={style["content"]}>
             <label>내용</label>
             <div>
               <input
@@ -135,19 +135,21 @@ function Pay() {
               onChange={handleSpendContent}
               value={spendContent}
               placeholder="내용을 입력하세요 (예: 도서 구입)"
+              required
             />
           </li>
-          <li className={`${style.price}`}>
+          <li className={style["price"]}>
             <label>금액</label>
             <input
               onChange={handlePrice}
               value={price}
               type="number"
               placeholder="금액을 입력하세요 (예: 18000)"
+              required
             />
           </li>
-          <li className={`${style.send}`}>
-            <button onClick={handleSubmit} className={`${style.pay_confirm}`}>
+          <li className={style["send"]}>
+            <button onClick={handleSubmit} className={style["pay_confirm"]}>
               입력하기
             </button>
           </li>

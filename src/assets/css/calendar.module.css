@@ -83,8 +83,8 @@
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 .calendar_container > ul > li.today:after {
-  background-color: #344fc1;
+  background-color: #6f73a0;
 }
 .calendar_container > ul > li.on:after {
-  background-color: #f87e50;
+  background-color: #f55c34;
 }

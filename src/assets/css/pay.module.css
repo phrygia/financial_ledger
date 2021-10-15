@@ -4,7 +4,7 @@
 .pay_container {
   position: relative;
   padding-top: 5px;
-  background-color: #526ee4;
+  background-color: #262439;
   min-height: calc(100vh - 60px);
 }
 .pay_container .pay_form {
@@ -80,7 +80,7 @@
   cursor: pointer;
 }
 .pay_container .pay_form li.content > div label.on {
-  background-color: #526ee4;
+  background-color: #262439;
   color: #fff;
 }
 .pay_container .pay_form li.content > input,
@@ -95,11 +95,12 @@
 }
 .pay_container .pay_form li.send button {
   width: 100%;
-  height: 46px;
+  height: 50px;
   border: 0;
-  background-color: #f87e50;
-  color: #fff;
-  font-size: 0.8rem;
+  background-color: #262439;
+  color: #f55c34;
+  font-weight: 700;
+  font-size: 0.9rem;
   border-radius: 2rem;
   cursor: pointer;
 }

@@ -1,16 +1,89 @@
 .tab_container {
-  margin-top: 50px;
+  margin: 70px 20px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f1f1f1;
+}
+.tab_container button {
+  margin-right: 10px;
+  background-color: transparent;
+  border: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #bdbbc7;
+}
+.tab_container button.on {
+  color: #262439;
 }
 .book_list {
   padding: 20px;
 }
 .book_list > li {
+  position: relative;
+}
+.book_list > li.each {
 }
 .book_list > li.same {
+}
+.book_list > li h2 {
+  font-size: 12px;
+  color: #adacb4;
 }
 .book_list > li > ul {
   width: 100%;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .book_list > li > ul > li {
+  position: relative;
+  padding-left: 55px;
+  margin-bottom: 25px;
+}
+.book_list > li > ul > li:first-child .icon_box {
+  position: absolute;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 100%;
+  text-align: center;
+  font-size: 22px;
+}
+.book_list > li > ul > li:first-child b {
+  color: #6f73a0;
+  font-size: 12px;
+}
+.book_list > li > ul > li:first-child p {
+  margin-top: -1px;
+  color: #bdbbc7;
+  font-size: 14px;
+  font-weight: 500;
+}
+.book_list > li > ul > li:nth-child(2) .income {
+  color: #53aa00;
+}
+.book_list > li > ul > li:nth-child(2) .cost {
+  color: #b91f32;
+}
+.book_list > li > ul > li button {
+  border: 0;
+  background-color: transparent;
+}
+.add_btn {
+  position: fixed;
+  width: calc(100% - 60px);
+  left: 30px;
+  bottom: 30px;
+  z-index: 9;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background-color: #262439;
+  color: #f55c34;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: 2rem;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.15);
 }
