@@ -35,7 +35,7 @@ const Header = (props) => {
 
   return (
     <header className={`${style["header"]} ${classes}`}>
-      {url === "/add" ? (
+      {url === "/pay" ? (
         <>
           <Link to={"/"} className={style["btn"]}>
             <IoArrowBack />
@@ -67,7 +67,7 @@ const Header = (props) => {
         </Modal>
       ) : (
         <>
-          {url !== "/add" ? (
+          {url !== "/pay" ? (
             <Link to={"/user"} className={style["btn"]}>
               <FiGrid />
             </Link>

@@ -16,7 +16,7 @@ import Pay from "./components/pay/Pay";
 const initialState = {
   user_name: JSON.parse(localStorage.getItem("userName"))?.name,
   money_list: JSON.parse(localStorage.getItem("money_list")) || [],
-  edit_info: JSON.parse(localStorage.getItem("edit_info")) || {},
+  edit_info: JSON.parse(localStorage.getItem("edit_info")) || null,
 };
 
 export const store = React.createContext();
@@ -31,7 +31,7 @@ function App() {
           <Switch>
             <Route path="/" component={Main} exact />
             <Route path="/user" component={User} exact />
-            <Route path="/add" component={Pay} />
+            <Route path="/pay" component={Pay} />
             <Route path={"*"} component={NotFound} />
           </Switch>
         </Router>

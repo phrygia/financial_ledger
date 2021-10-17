@@ -24,6 +24,9 @@ select {
   outline: none;
   font-family: "Noto Sans KR", sans-serif;
 }
+button {
+  cursor: pointer;
+}
 input[type="text"] {
   -webkit-appearance: none;
   -webkit-border-radius: 0;

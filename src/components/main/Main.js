@@ -1,20 +1,24 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import Header from "../common/Header";
 import { store } from "../../App";
-import { HiOutlineShoppingBag } from "react-icons/hi";
+// import { HiOutlineShoppingBag } from "react-icons/hi";
 import {
-  IoRemoveOutline,
+  IoRemoveCircleSharp,
   IoFastFoodOutline,
   IoSubwayOutline,
 } from "react-icons/io5";
+// import { IoMdRemoveCircle } from "react-icons/io";
 import { FaUserFriends } from "react-icons/fa";
 import { FiCoffee } from "react-icons/fi";
 import { RiMovie2Line } from "react-icons/ri";
 import { GiPartyPopper } from "react-icons/gi";
 import { BsBook } from "react-icons/bs";
 import { CgGym } from "react-icons/cg";
-import { MdOutlineShoppingBasket } from "react-icons/md";
+import {
+  MdOutlineShoppingBasket,
+  MdOutlineArrowForwardIos,
+} from "react-icons/md";
 import style from "../../assets/css/main.module.css";
 
 function Main() {
@@ -50,8 +54,16 @@ function Main() {
     { type: "selfImprovement", color: "#5f4b8b" },
     { type: "exercise", color: "#0c4a86" },
   ];
+  const history = useHistory();
 
-  const onClick = (val) => {
+  const handleEdit = (val) => {
+    const Obj = { info: val };
+    localStorage.setItem("edit_info", JSON.stringify(Obj));
+    dispatch({ type: "EDIT_MONEY_IFNO", edit_info: Obj });
+    history.push("/pay");
+  };
+
+  const handleRemove = (val) => {
     console.log(val);
   };
 
@@ -85,19 +97,27 @@ function Main() {
             >
               {iconType[typeIdx]}
             </div>
-            <b>{val.kinds}</b>
-            <p>{val.spendContent}</p>
+            <div>
+              <b>{val.kinds}</b>
+              <p>{val.spendContent}</p>
+            </div>
           </li>
           <li>
             <span className={typeSpend ? style["income"] : style["cost"]}>
               {typeSpend ? "+ " : "- "}
               {val.price}
             </span>
-            <button onClick={() => onClick(val)}>
-              <IoRemoveOutline color={typeSpend ? "#53aa00" : "#b91f32"} />
+            <button onClick={() => handleEdit(val)}>
+              <MdOutlineArrowForwardIos color="#adacb4" />
             </button>
           </li>
         </ul>
+        <button
+          onClick={() => handleRemove(val)}
+          className={style["remove_btn"]}
+        >
+          {/* <IoRemoveCircleSharp color="#eb2739" /> */}삭제하기
+        </button>
       </li>
     );
   });
@@ -128,7 +148,7 @@ function Main() {
       <ul className={style["book_list"]}>
         {money_list.length === 0 ? <li>거래내역이 없습니다.</li> : List}
       </ul>
-      <Link className={style["add_btn"]} to={"/add"}>
+      <Link className={style["add_btn"]} to={"/pay"}>
         내역 추가하기
       </Link>
     </>

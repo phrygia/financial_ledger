@@ -5,7 +5,11 @@ import style from "../../assets/css/calendar.module.css";
 const Calendar = (props) => {
   const {
     setDate,
+    date,
     setCalendarHeight,
+    clicked,
+    setClicked,
+    editMode,
     firstDate,
     lastDate,
     year,
@@ -16,6 +20,7 @@ const Calendar = (props) => {
   } = props;
 
   const [on, setOn] = useState("");
+  const [selected, setSelected] = useState(null);
   const calendar = useRef();
   const hasToday = new Date(year, month - 1);
   const condition =
@@ -23,11 +28,25 @@ const Calendar = (props) => {
     hasToday.getFullYear() + hasToday.getMonth();
   const months = String(month).length === 1 ? `0${month}` : month;
 
+  console.log();
+
   useEffect(() => {
     setCalendarHeight(calendar.current.clientHeight + 55);
+    if (editMode && !clicked) {
+      setOn(editMode.info.date.split("-")[2] - 1);
+      setSelected(new Date(date));
+
+      //   selected.getFullYear(), year,
+      // selected.getMonth() < 10
+      //   ? `0${selected.getMonth() + 1}`
+      //   : selected.getMonth() + 1,
+      // months
+    }
   }, [month]);
 
   const onClick = (i) => {
+    setSelected(new Date(date));
+    setClicked(true);
     setOn(i);
     setDate(`${year} ${months} ${i + 1 < 10 ? `0${i + 1}` : i + 1}`);
   };
@@ -38,12 +57,14 @@ const Calendar = (props) => {
   ));
 
   const list = [...Array(lastDate.getDate())].map((v, i) => (
+    // className : 선택한 날짜에 on
+    // className : 오늘날짜에 today
     <li
       key={i}
       onClick={() => onClick(i)}
       className={`${
-        condition && i + 1 === today.getDate() ? style.today : ""
-      } ${on === i ? style.on : ""}`}
+        condition && i + 1 === today.getDate() ? style["today"] : ""
+      } ${on === i ? style["on"] : ""}`}
     >
       <input value={i + 1} readOnly />
     </li>
@@ -55,10 +76,12 @@ const Calendar = (props) => {
     </li>
   ));
 
+  // console.log(prevCalendar);
+
   return (
     <div ref={calendar} className={style["calendar_container"]}>
       <div className={style["calendar_ym"]}>
-        <button onClick={() => prevCalendar()}>
+        <button onClick={prevCalendar}>
           <MdArrowBackIos />
         </button>
         <p>

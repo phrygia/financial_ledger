@@ -15,33 +15,62 @@
   color: #262439;
 }
 .book_list {
-  padding: 20px;
+  position: relative;
+  padding: 30px 20px 0;
+  margin-bottom: 105px;
+}
+.book_list:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 40px;
+  width: 1px;
+  height: calc(100% - 30px);
+  background-color: #bdbbc7;
 }
 .book_list > li {
   position: relative;
 }
+.book_list > li:not(:last-child) {
+  margin-bottom: 32px;
+}
+.book_list > li:hover > ul {
+  margin-left: -60px;
+}
 .book_list > li.each {
 }
-.book_list > li.same {
+.book_list > li.same:not(:first-child) {
+  margin-top: -14px;
 }
 .book_list > li h2 {
+  padding: 3px 0;
+  margin-bottom: 10px;
   font-size: 12px;
   color: #adacb4;
+  background-color: #fff;
 }
 .book_list > li > ul {
+  position: relative;
+  z-index: 2;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: 0.29s ease;
 }
-.book_list > li > ul > li {
+.book_list > li > ul > li:first-child {
   position: relative;
+  width: calc(100% - 100px);
   padding-left: 55px;
-  margin-bottom: 25px;
+}
+.book_list > li > ul > li:first-child > div {
+  background-color: #fff;
 }
 .book_list > li > ul > li:first-child .icon_box {
   position: absolute;
+  z-index: 3;
   left: 0;
+  top: 4px;
   width: 40px;
   height: 40px;
   line-height: 40px;
@@ -61,6 +90,15 @@
   font-size: 14px;
   font-weight: 500;
 }
+.book_list > li > ul > li:nth-child(2) {
+  width: 100px;
+  text-align: right;
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: -0.3px;
+  background-color: #fff;
+}
 .book_list > li > ul > li:nth-child(2) .income {
   color: #53aa00;
 }
@@ -68,8 +106,25 @@
   color: #b91f32;
 }
 .book_list > li > ul > li button {
+  padding-left: 7px;
   border: 0;
   background-color: transparent;
+}
+.book_list > li > .remove_btn {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  border: 0;
+  background-color: transparent;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.book_list > li.same > .remove_btn {
+  margin-top: -4px;
+}
+.book_list > li.each > .remove_btn {
+  margin-top: 13px;
 }
 .add_btn {
   position: fixed;

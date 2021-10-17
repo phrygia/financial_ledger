@@ -12,21 +12,34 @@ function Pay() {
   const [year, setYear] = useState("");
   const [month, setMonth] = useState("");
   const [day, setDay] = useState("");
+  const [clicked, setClicked] = useState(false); // 클릭여부 확인
   const [selected, setSelected] = useState("food");
   const [spending, setSpending] = useState("");
   const [spendContent, setSpendContent] = useState("");
   const [price, setPrice] = useState("");
   const history = useHistory();
   const login = state.user_name ? "" : `${style["notLogin"]}`;
+  const edit = state.edit_info ? state.edit_info : null;
 
   useEffect(() => {
-    if (date) {
-      const yy = date.split(" ")[0];
-      const mm = date.split(" ")[1];
-      const dd = date.split(" ")[2];
-      setYear(yy);
-      setMonth(mm);
-      setDay(dd);
+    if (date && clicked) {
+      const getFullDate = date.split(" ");
+      setYear(getFullDate[0]);
+      setMonth(getFullDate[1]);
+      setDay(getFullDate[2]);
+    }
+    if (edit && edit.info && !clicked) {
+      setDate(edit.info.date);
+      if (date !== null) {
+        const getFullDate = date.split("-");
+        setYear(getFullDate[0]);
+        setMonth(getFullDate[1]);
+        setDay(getFullDate[2]);
+      }
+      setSelected(edit.info.kinds);
+      setSpending(edit.info.spending);
+      setSpendContent(edit.info.spendContent);
+      setPrice(edit.info.price);
     }
   }, [date]);
 
@@ -46,15 +59,19 @@ function Pay() {
     setPrice(e.target.value);
   };
 
-  const handleSubmit = () => {
-    if (!date) return alert("날짜를 선택해주세요");
-    if (spending.length === 0) return alert("지출/수입을 선택해주세요");
+  const handleSubmit = (e) => {
+    const editMode = e.target.innerText === "수정하기";
+
+    if (!editMode) {
+      if (!date) return alert("날짜를 선택해주세요");
+      if (spending.length === 0) return alert("지출/수입을 선택해주세요");
+    }
     if (spendContent.length === 0)
       return alert("지출/수입 내용을 입력해주세요");
+    if (price.length === 0) return alert("금액을 입력해주세요.");
 
     let existingEntries = JSON.parse(localStorage.getItem("money_list"));
     if (existingEntries == null) existingEntries = [];
-
     const info = {
       number: existingEntries.length + 1,
       date: `${year}-${month}-${day}`,
@@ -65,8 +82,13 @@ function Pay() {
     };
     existingEntries.push(info);
     localStorage.setItem("money_list", JSON.stringify(existingEntries));
-
     dispatch({ type: "ADD_MONEY_IFNO", money_list: existingEntries });
+
+    if (editMode) {
+      localStorage.removeItem("edit_info");
+      dispatch({ type: "EDIT_MONEY_IFNO", edit_info: null });
+    }
+
     history.push("/");
   };
 
@@ -74,7 +96,14 @@ function Pay() {
     <>
       <Header class="pay" />
       <section className={`${style["pay_container"]} ${login}`}>
-        <FullCalendar setDate={setDate} setCalendarHeight={setCalendarHeight} />
+        <FullCalendar
+          date={date}
+          setDate={setDate}
+          setCalendarHeight={setCalendarHeight}
+          clicked={clicked}
+          setClicked={setClicked}
+          editMode={edit}
+        />
         <ul
           className={style["pay_form"]}
           style={{ marginTop: `${calendarHeight}px` }}
@@ -150,7 +179,7 @@ function Pay() {
           </li>
           <li className={style["send"]}>
             <button onClick={handleSubmit} className={style["pay_confirm"]}>
-              입력하기
+              {edit ? "수정하기" : "입력하기"}
             </button>
           </li>
         </ul>
