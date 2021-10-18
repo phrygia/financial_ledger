@@ -32,15 +32,18 @@ const Header = (props) => {
   const openModal = () => {
     setModalOpen(true);
   };
+
   const closeModal = () => {
     setModalOpen(false);
   };
+
   const confirm = () => {
     localStorage.removeItem("money_list");
     dispatch({ type: "ADD_MONEY_IFNO", money_list: [] });
     setModalOpen(false);
     history.push("/");
   };
+
   const userEdit = () => {
     history.push("/user");
   };
