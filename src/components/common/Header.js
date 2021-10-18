@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { IoArrowBack } from "react-icons/io5";
 import { FiGrid } from "react-icons/fi";
@@ -13,7 +13,21 @@ const Header = (props) => {
   const [state, dispatch] = useContext(store);
   const history = useHistory();
   const url = history.location.pathname;
+  const edit = state.edit_info ? state.edit_info : null; // 수정모드 체크
   const classes = props.class ? style[props.class] : "";
+
+  useEffect(() => {
+    // 수정모드가 아닐때 메인, 로그인 페이지에서 수정모드정보 삭제
+    // 수정모드면 수정모드정보 유지
+    if (window.performance) {
+      if (performance.navigation.type === 1) {
+        if (url !== "/pay" && state.edit_info !== null) {
+          localStorage.removeItem("edit_info");
+          dispatch({ type: "EDIT_MONEY_IFNO", edit_info: null });
+        }
+      }
+    }
+  }, []);
 
   const openModal = () => {
     setModalOpen(true);
@@ -38,7 +52,7 @@ const Header = (props) => {
           <Link to={"/"} className={style["btn"]}>
             <IoArrowBack />
           </Link>
-          <h1>새로운 거래</h1>
+          <h1>{edit ? "거래 수정하기" : "거래 추가하기"}</h1>
         </>
       ) : (
         <>

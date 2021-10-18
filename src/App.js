@@ -1,11 +1,6 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useReducer } from "react";
 import "./App.css";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  HashRouter,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Main from "./components/main/Main";
 import NotFound from "./components/common/NotFound";
 import User from "./components/user/User";
@@ -23,16 +18,6 @@ export const store = React.createContext();
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
-
-  useEffect(() => {
-    if (window.performance) {
-      if (performance.navigation.type == 1) {
-        alert("This page is reloaded");
-      } else {
-        alert("This page is not reloaded");
-      }
-    }
-  }, []);
 
   return (
     <store.Provider value={[state, dispatch]}>

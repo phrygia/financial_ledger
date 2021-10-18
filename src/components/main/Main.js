@@ -60,8 +60,6 @@ function Main() {
     const Obj = { info: val };
     localStorage.setItem("edit_info", JSON.stringify(Obj));
     dispatch({ type: "EDIT_MONEY_IFNO", edit_info: Obj });
-    // localStorage.removeItem("edit_info");
-    // dispatch({ type: "EDIT_MONEY_IFNO", edit_info: null });
     history.push("/pay");
   };
 
@@ -89,9 +87,8 @@ function Main() {
     }
   };
 
-  console.log(list);
-
   const List = list.map((val, i) => {
+    // 수입, 지출에 따라 값 필터
     const same = i > 0 && list[i - 1].date === list[i].date;
     const typeSpend = val.spending === "수입";
     const typeIdx = iconInfo.findIndex((v) => v.type === val.kinds);
@@ -156,7 +153,11 @@ function Main() {
         </button>
       </div>
       <ul className={style["book_list"]}>
-        {money_list.length === 0 ? <li>거래내역이 없습니다.</li> : List}
+        {list.length === 0 ? (
+          <li className={style["empty"]}>거래내역이 없습니다.</li>
+        ) : (
+          List
+        )}
       </ul>
       <Link className={style["add_btn"]} to={"/pay"}>
         내역 추가하기

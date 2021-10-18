@@ -37,6 +37,13 @@
 .book_list > li:hover > ul {
   margin-left: -60px;
 }
+.book_list > li.empty {
+  text-align: center;
+  background-color: #fff;
+  color: #adacb4;
+  font-size: 14px;
+  font-weight: 500;
+}
 .book_list > li.each {
 }
 .book_list > li.same:not(:first-child) {

@@ -75,8 +75,6 @@ function Pay() {
     let existingEntries = JSON.parse(localStorage.getItem("money_list"));
     if (existingEntries == null) existingEntries = [];
 
-    // console.log(existingEntries);
-
     const info = {
       number: existingEntries.length + 1,
       date: `${year}-${month}-${day}`,
