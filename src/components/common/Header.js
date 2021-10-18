@@ -22,9 +22,7 @@ const Header = (props) => {
     setModalOpen(false);
   };
   const confirm = () => {
-    // localStorage.removeItem("userName");
     localStorage.removeItem("money_list");
-    // dispatch({ type: 'SET_USER_NAME', user_name: null });
     dispatch({ type: "ADD_MONEY_IFNO", money_list: [] });
     setModalOpen(false);
     history.push("/");

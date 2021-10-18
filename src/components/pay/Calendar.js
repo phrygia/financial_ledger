@@ -28,23 +28,19 @@ const Calendar = (props) => {
     hasToday.getFullYear() + hasToday.getMonth();
   const months = String(month).length === 1 ? `0${month}` : month;
 
-  console.log();
-
   useEffect(() => {
+    // 달력마다 높이값이 다르기 때문에
     setCalendarHeight(calendar.current.clientHeight + 55);
+
+    // 수정모드 - 아직 한번도 클릭하지 않았을때
     if (editMode && !clicked) {
       setOn(editMode.info.date.split("-")[2] - 1);
       setSelected(new Date(date));
-
-      //   selected.getFullYear(), year,
-      // selected.getMonth() < 10
-      //   ? `0${selected.getMonth() + 1}`
-      //   : selected.getMonth() + 1,
-      // months
     }
   }, [month]);
 
   const onClick = (i) => {
+    console.log(year);
     setSelected(new Date(date));
     setClicked(true);
     setOn(i);
@@ -56,27 +52,30 @@ const Calendar = (props) => {
     <li key={i}>{""}</li>
   ));
 
-  const list = [...Array(lastDate.getDate())].map((v, i) => (
+  const list = [...Array(lastDate.getDate())].map((v, i) => {
     // className : 선택한 날짜에 on
     // className : 오늘날짜에 today
-    <li
-      key={i}
-      onClick={() => onClick(i)}
-      className={`${
-        condition && i + 1 === today.getDate() ? style["today"] : ""
-      } ${on === i ? style["on"] : ""}`}
-    >
-      <input value={i + 1} readOnly />
-    </li>
-  ));
+    const selectYear = selected ? selected.getFullYear() === year : null;
+    const selectMonth = selected ? selected.getMonth() + 1 === months : null;
+    // console.log(selectYear, selectMonth, selected, year, months);
+    return (
+      <li
+        key={i}
+        onClick={() => onClick(i)}
+        className={`${
+          condition && i + 1 === today.getDate() ? style["today"] : ""
+        } ${selectYear && selectMonth && on === i ? style["on"] : ""}`}
+      >
+        <input value={i + 1} readOnly />
+      </li>
+    );
+  });
 
   const days = ["일", "월", "화", "수", "목", "금", "토"].map((v) => (
     <li key={v} className={style["day"]}>
       {v}
     </li>
   ));
-
-  // console.log(prevCalendar);
 
   return (
     <div ref={calendar} className={style["calendar_container"]}>

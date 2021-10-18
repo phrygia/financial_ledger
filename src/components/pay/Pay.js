@@ -23,12 +23,14 @@ function Pay() {
 
   useEffect(() => {
     if (date && clicked) {
+      // 선택한 달력이 있을때
       const getFullDate = date.split(" ");
       setYear(getFullDate[0]);
       setMonth(getFullDate[1]);
       setDay(getFullDate[2]);
     }
     if (edit && edit.info && !clicked) {
+      // 수정모드 - 달력 클릭하지 않음
       setDate(edit.info.date);
       if (date !== null) {
         const getFullDate = date.split("-");

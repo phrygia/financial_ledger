@@ -58,13 +58,21 @@ function Main() {
 
   const handleEdit = (val) => {
     const Obj = { info: val };
-    localStorage.setItem("edit_info", JSON.stringify(Obj));
-    dispatch({ type: "EDIT_MONEY_IFNO", edit_info: Obj });
+    // localStorage.setItem("edit_info", JSON.stringify(Obj));
+    // dispatch({ type: "EDIT_MONEY_IFNO", edit_info: Obj });
+    localStorage.removeItem("edit_info");
+    dispatch({ type: "EDIT_MONEY_IFNO", edit_info: null });
     history.push("/pay");
   };
 
   const handleRemove = (val) => {
-    console.log(val);
+    let existingEntries = JSON.parse(localStorage.getItem("money_list"));
+    const filterVal = existingEntries.filter((v) => {
+      if (val.number !== v.number && val.date !== v.date) return v;
+    });
+    localStorage.setItem("money_list", JSON.stringify(filterVal));
+    dispatch({ type: "ADD_MONEY_IFNO", money_list: filterVal });
+    setList(filterVal);
   };
 
   const handleList = (e) => {
@@ -80,6 +88,8 @@ function Main() {
       setList(ar);
     }
   };
+
+  console.log(list);
 
   const List = list.map((val, i) => {
     const same = i > 0 && list[i - 1].date === list[i].date;
@@ -116,7 +126,7 @@ function Main() {
           onClick={() => handleRemove(val)}
           className={style["remove_btn"]}
         >
-          {/* <IoRemoveCircleSharp color="#eb2739" /> */}삭제하기
+          삭제하기
         </button>
       </li>
     );
