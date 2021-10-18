@@ -24,9 +24,9 @@ function App() {
       <div className="app">
         <Router>
           <Switch>
-            <Route path="/" component={Main} exact />
-            <Route path="/user" component={User} exact />
-            <Route path="/pay" component={Pay} />
+            <Route path="/financial_ledger" component={Main} exact />
+            <Route path="/financial_ledger/user" component={User} exact />
+            <Route path="/financial_ledger/pay" component={Pay} />
             <Route path={"*"} component={NotFound} />
           </Switch>
         </Router>
