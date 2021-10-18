@@ -58,10 +58,10 @@ function Main() {
 
   const handleEdit = (val) => {
     const Obj = { info: val };
-    // localStorage.setItem("edit_info", JSON.stringify(Obj));
-    // dispatch({ type: "EDIT_MONEY_IFNO", edit_info: Obj });
-    localStorage.removeItem("edit_info");
-    dispatch({ type: "EDIT_MONEY_IFNO", edit_info: null });
+    localStorage.setItem("edit_info", JSON.stringify(Obj));
+    dispatch({ type: "EDIT_MONEY_IFNO", edit_info: Obj });
+    // localStorage.removeItem("edit_info");
+    // dispatch({ type: "EDIT_MONEY_IFNO", edit_info: null });
     history.push("/pay");
   };
 

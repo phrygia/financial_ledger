@@ -17,9 +17,9 @@ function Pay() {
   const [spending, setSpending] = useState("");
   const [spendContent, setSpendContent] = useState("");
   const [price, setPrice] = useState("");
+  const login = state.user_name ? "" : `${style["notLogin"]}`; // 로그인상태인지 체크
+  const edit = state.edit_info ? state.edit_info : null; // 수정모드 체크
   const history = useHistory();
-  const login = state.user_name ? "" : `${style["notLogin"]}`;
-  const edit = state.edit_info ? state.edit_info : null;
 
   useEffect(() => {
     if (date && clicked) {
@@ -74,6 +74,9 @@ function Pay() {
 
     let existingEntries = JSON.parse(localStorage.getItem("money_list"));
     if (existingEntries == null) existingEntries = [];
+
+    // console.log(existingEntries);
+
     const info = {
       number: existingEntries.length + 1,
       date: `${year}-${month}-${day}`,
@@ -82,13 +85,26 @@ function Pay() {
       spendContent: spendContent,
       price: price,
     };
-    existingEntries.push(info);
-    localStorage.setItem("money_list", JSON.stringify(existingEntries));
-    dispatch({ type: "ADD_MONEY_IFNO", money_list: existingEntries });
 
+    // 수정모드
     if (editMode) {
+      const editInfo = edit.info;
+      info.number = editInfo.number;
+
+      const filterInfo = existingEntries.filter((v) => {
+        if (v.number !== editInfo.number) return v;
+      });
+
+      filterInfo.push(info);
+      localStorage.setItem("money_list", JSON.stringify(filterInfo));
+      dispatch({ type: "ADD_MONEY_IFNO", money_list: filterInfo });
       localStorage.removeItem("edit_info");
       dispatch({ type: "EDIT_MONEY_IFNO", edit_info: null });
+    } else {
+      // 추가모드
+      existingEntries.push(info);
+      localStorage.setItem("money_list", JSON.stringify(existingEntries));
+      dispatch({ type: "ADD_MONEY_IFNO", money_list: existingEntries });
     }
 
     history.push("/");

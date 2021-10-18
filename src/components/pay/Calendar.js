@@ -32,18 +32,21 @@ const Calendar = (props) => {
     // 달력마다 높이값이 다르기 때문에
     setCalendarHeight(calendar.current.clientHeight + 55);
 
-    // 수정모드 - 아직 한번도 클릭하지 않았을때
+    /* 
+      수정모드 - 아직 한번도 클릭하지 않았을때
+                선택한 값의 날짜를 상태값으로 불러옴
+    */
     if (editMode && !clicked) {
-      setOn(editMode.info.date.split("-")[2] - 1);
-      setSelected(new Date(date));
+      const getEditDate = editMode.info.date;
+      setOn(Number(getEditDate.split("-")[2]) - 1);
+      setSelected(new Date(getEditDate));
     }
   }, [month]);
 
   const onClick = (i) => {
-    console.log(year);
-    setSelected(new Date(date));
-    setClicked(true);
-    setOn(i);
+    setSelected(new Date(`${year} ${months} ${i + 1}`)); // 선택한 날짜값 저장
+    setClicked(true); // 처음 선택했는지 확인하기 위해
+    setOn(i); // 선택한 일
     setDate(`${year} ${months} ${i + 1 < 10 ? `0${i + 1}` : i + 1}`);
   };
 
@@ -53,11 +56,19 @@ const Calendar = (props) => {
   ));
 
   const list = [...Array(lastDate.getDate())].map((v, i) => {
-    // className : 선택한 날짜에 on
-    // className : 오늘날짜에 today
-    const selectYear = selected ? selected.getFullYear() === year : null;
-    const selectMonth = selected ? selected.getMonth() + 1 === months : null;
-    // console.log(selectYear, selectMonth, selected, year, months);
+    /*
+      **className 
+        on - 선택한 날짜에
+        today - 오늘날짜
+      
+      selected : 선택한 날짜에 class on을 주기위한 상태값 -> 선택한 연도+월+on 상태값 (일)을 체크함
+    */
+    const selectYear = selected
+      ? selected.getFullYear() === Number(year)
+      : null;
+    const selectMonth = selected
+      ? selected.getMonth() + 1 === Number(months)
+      : null;
     return (
       <li
         key={i}
