@@ -105,7 +105,7 @@ function Pay() {
       dispatch({ type: "ADD_MONEY_IFNO", money_list: existingEntries });
     }
 
-    history.push("/");
+    history.push("/financial_ledger");
   };
 
   return (

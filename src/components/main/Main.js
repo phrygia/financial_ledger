@@ -60,7 +60,7 @@ function Main() {
     const Obj = { info: val };
     localStorage.setItem("edit_info", JSON.stringify(Obj));
     dispatch({ type: "EDIT_MONEY_IFNO", edit_info: Obj });
-    history.push("/pay");
+    history.push("/financial_ledger/pay");
   };
 
   const handleRemove = (val) => {
@@ -159,7 +159,7 @@ function Main() {
           List
         )}
       </ul>
-      <Link className={style["add_btn"]} to={"/pay"}>
+      <Link className={style["add_btn"]} to={"/financial_ledger/pay"}>
         내역 추가하기
       </Link>
     </>

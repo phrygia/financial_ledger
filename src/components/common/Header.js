@@ -21,7 +21,7 @@ const Header = (props) => {
     // 수정모드면 수정모드정보 유지
     if (window.performance) {
       if (performance.navigation.type === 1) {
-        if (url !== "/pay" && state.edit_info !== null) {
+        if (url !== "/financial_ledger/pay" && state.edit_info !== null) {
           localStorage.removeItem("edit_info");
           dispatch({ type: "EDIT_MONEY_IFNO", edit_info: null });
         }
@@ -41,18 +41,18 @@ const Header = (props) => {
     localStorage.removeItem("money_list");
     dispatch({ type: "ADD_MONEY_IFNO", money_list: [] });
     setModalOpen(false);
-    history.push("/");
+    history.push("/financial_ledger");
   };
 
   const userEdit = () => {
-    history.push("/user");
+    history.push("/financial_ledger/user");
   };
 
   return (
     <header className={`${style["header"]} ${classes}`}>
-      {url === "/pay" ? (
+      {url === "/financial_ledger/pay" ? (
         <>
-          <Link to={"/"} className={style["btn"]}>
+          <Link to={"/financial_ledger"} className={style["btn"]}>
             <IoArrowBack />
           </Link>
           <h1>{edit ? "거래 수정하기" : "거래 추가하기"}</h1>
@@ -82,8 +82,8 @@ const Header = (props) => {
         </Modal>
       ) : (
         <>
-          {url !== "/pay" ? (
-            <Link to={"/user"} className={style["btn"]}>
+          {url !== "/financial_ledger/pay" ? (
+            <Link to={"/financial_ledger/user"} className={style["btn"]}>
               <FiGrid />
             </Link>
           ) : (
