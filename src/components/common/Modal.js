@@ -17,7 +17,7 @@ const Modal = (props) => {
           <div className={style.header}>
             {close && (
               <button onClick={close}>
-                <IoMdClose />
+                <IoMdClose color="#323232" />
               </button>
             )}
             <Icon color="#f55c34" />

@@ -1,90 +1,91 @@
 .calendar_container {
-  position: fixed;
-  left: 0;
-  top: 55px;
-  width: 100%;
-  padding: 0 20px;
+    position: fixed;
+    left: 0;
+    top: 55px;
+    width: 100%;
+    padding: 0 20px;
 }
 .calendar_container > .calendar_ym {
-  position: relative;
-  width: 100%;
-  height: 27px;
-  display: flex;
-  justify-content: space-between;
-  margin: 10px 0;
+    position: relative;
+    width: 100%;
+    height: 27px;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
 }
 .calendar_container > .calendar_ym p {
-  position: absolute;
-  left: 50%;
-  top: 1px;
-  width: 100px;
-  margin-left: -50px;
-  font-family: "Poppins", sans-serif;
-  color: #fff;
-  font-size: 1.15rem;
-  text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 1px;
+    width: 100px;
+    margin-left: -50px;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    font-size: 1.15rem;
+    text-align: center;
 }
 .calendar_container > .calendar_ym button {
-  border: 0;
-  background-color: transparent;
-  align-items: center;
-  font-size: 1.2rem;
-  color: #fff;
-  opacity: 0.8;
+    border: 0;
+    background-color: transparent;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #fff;
+    opacity: 0.8;
 }
 .calendar_container > ul {
-  display: flex;
-  flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
 }
 .calendar_container > ul > li {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: calc(100% / 7);
-  height: 43px;
-  color: #fff;
-  font-weight: 400;
-  font-size: 0.9rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% / 7);
+    height: 43px;
+    color: #fff;
+    font-weight: 400;
+    font-size: 0.9rem;
 }
 .calendar_container > ul > li input {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  height: 100%;
-  border: 0;
-  background-color: transparent;
-  text-align: center;
-  cursor: pointer;
-  color: #fff;
-  font-weight: 400;
-  font-size: 0.9rem;
-  font-family: "Poppins", sans-serif;
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background-color: transparent;
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+    font-weight: 400;
+    font-size: 0.9rem;
+    font-family: 'Poppins', sans-serif;
 }
 .calendar_container > ul > li.day {
-  font-family: "Nanum Gothic", sans-serif;
-  margin-bottom: 5px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    font-family: 'Nanum Gothic', sans-serif;
+    margin-bottom: 5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 .calendar_container > ul > li.today {
-  position: relative;
+    position: relative;
 }
 .calendar_container > ul > li.today:after,
 .calendar_container > ul > li.on:after {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  display: block;
-  content: "";
-  width: 35px;
-  height: 35px;
-  border-radius: 100%;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    content: '';
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 .calendar_container > ul > li.today:after {
-  background-color: #6f73a0;
+    background-color: #6f73a0;
 }
 .calendar_container > ul > li.on:after {
-  background-color: #f55c34;
+    background-color: #f55c34;
+    z-index: 2;
 }

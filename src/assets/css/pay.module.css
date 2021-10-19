@@ -1,106 +1,112 @@
 .pay_container.notLogin .pay_form {
-  z-index: 1;
+    z-index: 1;
 }
 .pay_container {
-  position: relative;
-  padding-top: 5px;
-  background-color: #262439;
-  min-height: calc(100vh - 60px);
+    position: relative;
+    padding-top: 5px;
+    background-color: #262439;
+    min-height: calc(100vh - 60px);
 }
 .pay_container .pay_form {
-  position: relative;
-  z-index: 2;
-  padding: 40px 25px 5px;
-  border-radius: 2rem 2rem 0 0;
-  background-color: #fff;
+    position: relative;
+    z-index: 2;
+    padding: 40px 25px 5px;
+    border-radius: 2rem 2rem 0 0;
+    background-color: #fff;
 }
 .pay_container .pay_form li {
-  margin-bottom: 25px;
-  font-family: "Nanum Gothic", sans-serif;
+    margin-bottom: 25px;
+    font-family: 'Nanum Gothic', sans-serif;
 }
 .pay_container .pay_form li input {
-  height: 40px;
-  padding: 0 15px;
-  border-radius: 6px;
-  border: 0;
-  font-size: 0.8rem;
+    height: 40px;
+    padding: 0 15px;
+    border-radius: 6px;
+    border: 0;
+    font-size: 0.8rem;
 }
 .pay_container .pay_form li > label {
-  display: block;
-  margin-bottom: 10px;
-  font-weight: 700;
-  font-size: 0.9rem;
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 700;
+    font-size: 0.9rem;
 }
 .pay_container .pay_form li.date > div {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 .pay_container .pay_form li.date > div > input {
-  width: calc(33.3% - 10px);
-  text-align: center;
-  background-color: #f1f1f1;
-  font-family: "Nanum Gothic", sans-serif;
-  font-weight: 500;
+    width: calc(33.3% - 10px);
+    text-align: center;
+    background-color: #f1f1f1;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: 500;
 }
 .pay_container .pay_form li.date > div > input::placeholder {
-  color: #999;
+    color: #999;
 }
 .pay_container .pay_form li.kinds select {
-  width: 100%;
-  height: 40px;
-  padding: 0 15px;
-  outline: none;
-  border-radius: 6px;
-  border: 0;
-  background-color: #f1f1f1;
-  font-size: 0.8rem;
-  cursor: pointer;
+    width: 100%;
+    height: 40px;
+    padding: 0 15px;
+    outline: none;
+    border-radius: 6px;
+    border: 0;
+    background-color: #f1f1f1;
+    font-size: 0.8rem;
+    cursor: pointer;
+    color: #323232;
+}
+.pay_container .pay_form li.kinds option {
+    color: #323232;
+    padding: 0 15px;
+    font-size: 0.8rem;
 }
 .pay_container .pay_form li.content > div {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 15px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
 }
 .pay_container .pay_form li.content > div input {
-  position: absolute;
-  opacity: 0;
+    position: absolute;
+    opacity: 0;
 }
 .pay_container .pay_form li.content > div label {
-  width: calc(50% - 10px);
-  height: 40px;
-  padding: 0 10px;
-  line-height: 40px;
-  background-color: #f1f1f1;
-  border-radius: 6px;
-  font-size: 0.8rem;
-  text-align: center;
-  transition: all 0.1s ease-in-out;
-  cursor: pointer;
+    width: calc(50% - 10px);
+    height: 40px;
+    padding: 0 10px;
+    line-height: 40px;
+    background-color: #f1f1f1;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    text-align: center;
+    transition: all 0.1s ease-in-out;
+    cursor: pointer;
 }
 .pay_container .pay_form li.content > div label.on {
-  background-color: #262439;
-  color: #fff;
+    background-color: #262439;
+    color: #fff;
 }
 .pay_container .pay_form li.content > input,
 .pay_container .pay_form li.price input {
-  width: 100%;
-  border: 1px solid #eae6e6;
-  transition: border 0.2s ease;
+    width: 100%;
+    border: 1px solid #eae6e6;
+    transition: border 0.2s ease;
 }
 .pay_container .pay_form li.content > input:focus,
 .pay_container .pay_form li.price input:focus {
-  border-color: #dbd8d8;
+    border-color: #dbd8d8;
 }
 .pay_container .pay_form li.send button {
-  width: 100%;
-  height: 50px;
-  border: 0;
-  background-color: #262439;
-  color: #f55c34;
-  font-weight: 700;
-  font-size: 0.9rem;
-  border-radius: 2rem;
-  cursor: pointer;
+    width: 100%;
+    height: 50px;
+    border: 0;
+    background-color: #262439;
+    color: #f55c34;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border-radius: 2rem;
+    cursor: pointer;
 }

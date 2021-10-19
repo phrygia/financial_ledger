@@ -56,7 +56,7 @@ const Header = (props) => {
             {url === '/financial_ledger/pay' ? (
                 <>
                     <Link to={'/financial_ledger'} className={style['btn']}>
-                        <IoArrowBack color="#323232" />
+                        <IoArrowBack color="#fff" />
                     </Link>
                     <h1>{edit ? '거래 수정하기' : '거래 추가하기'}</h1>
                 </>
@@ -68,7 +68,6 @@ const Header = (props) => {
                     </button>
                 </>
             )}
-
             {state.user_name ? (
                 <Modal
                     open={modalOpen}
@@ -90,7 +89,7 @@ const Header = (props) => {
                             to={'/financial_ledger/user'}
                             className={style['btn']}
                         >
-                            <FiGrid />
+                            <FiGrid color="#323232" />
                         </Link>
                     ) : (
                         <Modal

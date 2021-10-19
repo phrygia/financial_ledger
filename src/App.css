@@ -9,6 +9,8 @@ body {
     font-family: 'Noto Sans KR', sans-serif;
     color: #323232;
     touch-action: pan-y;
+    overscroll-behavior: contain;
+    overscroll-behavior-x: none;
 }
 .app {
     max-width: 414px;
