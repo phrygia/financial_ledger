@@ -20,7 +20,7 @@ function User() {
         const userObj = { name: userName };
         localStorage.setItem('userName', JSON.stringify(userObj));
         dispatch({ type: 'SET_USER_NAME', user_name: userName });
-        history.push('/financial_ledger');
+        history.push('/');
     };
 
     return (
@@ -54,7 +54,7 @@ function User() {
                 {user_name ? '수정하기' : '시작하기'}
             </button>
             {user_name && (
-                <Link to="/financial_ledger" className={style['cancel_btn']}>
+                <Link to="/" className={style['cancel_btn']}>
                     취소하기
                 </Link>
             )}

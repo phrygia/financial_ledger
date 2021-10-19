@@ -5,7 +5,6 @@ import style from '../../assets/css/calendar.module.css';
 const Calendar = (props) => {
     const {
         setDate,
-        date,
         setCalendarHeight,
         clicked,
         setClicked,
@@ -44,10 +43,12 @@ const Calendar = (props) => {
     }, [month]);
 
     const onClick = (i) => {
-        setSelected(new Date(`${year} ${months} ${i + 1}`)); // 선택한 날짜값 저장
+        const now = `${year}/${month}/${i + 1 < 10 ? `0${i + 1}` : i + 1}`;
+        setSelected(new Date(now)); // 선택한 날짜값 저장
         setClicked(true); // 처음 선택했는지 확인하기 위해
         setOn(i); // 선택한 일
-        setDate(`${year} ${months} ${i + 1 < 10 ? `0${i + 1}` : i + 1}`);
+        setDate(now);
+        alert(selected);
     };
 
     // 1일이 시작되는 칸을 맞추기 위한 빈칸

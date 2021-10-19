@@ -22,19 +22,11 @@ function App() {
     return (
         <store.Provider value={[state, dispatch]}>
             <div className="app">
-                <Router>
+                <Router basename={process.env.PUBLIC_URL}>
                     <Switch>
-                        <Route
-                            path="/financial_ledger"
-                            component={Main}
-                            exact
-                        />
-                        <Route
-                            path="/financial_ledger/user"
-                            component={User}
-                            exact
-                        />
-                        <Route path="/financial_ledger/pay" component={Pay} />
+                        <Route path="/" component={Main} exact />
+                        <Route path="/user" component={User} exact />
+                        <Route path="/pay" component={Pay} />
                         <Route path={'*'} component={NotFound} />
                     </Switch>
                 </Router>
