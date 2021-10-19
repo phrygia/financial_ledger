@@ -48,7 +48,6 @@ const Calendar = (props) => {
         setClicked(true); // 처음 선택했는지 확인하기 위해
         setOn(i); // 선택한 일
         setDate(now);
-        alert(selected);
     };
 
     // 1일이 시작되는 칸을 맞추기 위한 빈칸
