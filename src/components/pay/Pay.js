@@ -144,6 +144,7 @@ function Pay() {
               <option value="event">경조사</option>
               <option value="selfImprovement">자기계발</option>
               <option value="exercise">운동</option>
+              <option value="etc">기타</option>
             </select>
           </li>
           <li className={style["content"]}>

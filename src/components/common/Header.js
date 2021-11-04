@@ -39,7 +39,9 @@ const Header = (props) => {
 
   const confirm = () => {
     localStorage.removeItem("money_list");
+    localStorage.removeItem("user_name");
     dispatch({ type: "ADD_MONEY_IFNO", money_list: [] });
+    dispatch({ type: "SET_USER_NAME", user_name: null });
     setModalOpen(false);
     history.push("/");
   };
