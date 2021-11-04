@@ -15,6 +15,7 @@ import {
   MdOutlineArrowForwardIos,
 } from "react-icons/md";
 import style from "../../assets/css/main.module.css";
+import Statistics from "../common/Statistics";
 
 function Main() {
   const [state, dispatch] = useContext(store);
@@ -129,6 +130,7 @@ function Main() {
   return (
     <>
       <Header class="main" />
+      <Statistics />
       <div className={style["tab_container"]}>
         <button
           onClick={handleList}
