@@ -1,3 +1,7 @@
 .statistics_container {
   padding: 70px 20px 0;
 }
+
+.statistics_container text {
+  font-size: 5px;
+}
