@@ -110,7 +110,7 @@ function Main() {
           <li>
             <span className={typeSpend ? style["income"] : style["cost"]}>
               {typeSpend ? "+ " : "- "}
-              {val.price}
+              {val.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
             </span>
             <button onClick={() => handleEdit(val)}>
               <MdOutlineArrowForwardIos color="#adacb4" />

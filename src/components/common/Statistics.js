@@ -62,12 +62,12 @@ function Statistics() {
       <div className={style["left"]}>
         <h2>
           <span>지출금</span>
-          {cost}
+          {cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
         </h2>
         <br />
         <h4>
           <span>수입금</span>
-          {income}
+          {income.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
         </h4>
       </div>
       <div className={style["right"]}>
