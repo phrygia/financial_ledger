@@ -1,7 +1,59 @@
 .statistics_container {
-  padding: 70px 20px 0;
+  display: flex;
+  margin: 55px 20px 0;
+  padding: 15px 25px;
+  background-color: hsl(246, 23%, 18%);
+  border-radius: 10px;
+  color: #fff;
 }
-
-.statistics_container text {
-  font-size: 5px;
+.statistics_container > .left {
+  width: 60%;
+}
+.statistics_container > .left span {
+  display: block;
+  margin-bottom: 3px;
+  letter-spacing: 0;
+}
+.statistics_container > .left h2,
+.statistics_container > .left h4 {
+  display: inline-block;
+  position: relative;
+  letter-spacing: 1px;
+}
+.statistics_container > .left h2:after,
+.statistics_container > .left h4:after {
+  content: "원";
+  position: absolute;
+  padding-left: 1px;
+  font-weight: 400;
+}
+.statistics_container > .left h2 {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+.statistics_container > .left h2:after {
+  bottom: 3px;
+  font-size: 14px;
+}
+.statistics_container > .left h2 span {
+  font-size: 14px;
+  font-weight: 500;
+}
+.statistics_container > .left h4 {
+  font-size: 14px;
+  font-weight: 400;
+}
+.statistics_container > .left h4:after {
+  bottom: 2px;
+  font-size: 11px;
+}
+.statistics_container > .left h4 span {
+  font-size: 12px;
+}
+.statistics_container > .right {
+  width: 40%;
+}
+.statistics_container > .right text {
+  font-size: 11px;
+  fill: #fff;
 }

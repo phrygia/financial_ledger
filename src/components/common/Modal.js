@@ -5,7 +5,6 @@ import style from "../../assets/css/modal.module.css";
 const Modal = (props) => {
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
   const { open, close, header, confirm, agree, editText, edit } = props;
-  const Icon = props.icon;
 
   return (
     // 모달이 열릴때 openModal 클래스가 생성된다.
@@ -20,7 +19,7 @@ const Modal = (props) => {
                 <IoMdClose color="#323232" />
               </button>
             )}
-            <Icon color="#f55c34" />
+            {props.icon && <props.icon color="#f55c34" />}
             <h1>{header}</h1>
             <p>{props.children}</p>
           </div>
