@@ -9,10 +9,10 @@ function Statistics() {
   const [income, setIncome] = useState(0);
   const [cost, setCost] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
-  const [costDate, setcostDate] = useState(null);
+  const [costData, setcostData] = useState(null);
 
   // 지출
-  let date = [
+  let data = [
     { value: 0, color: "#9b1b30", title: "food", label: "음식" },
     { value: 0, color: "#5a5b9f", title: "shopping", label: "쇼핑" },
     { value: 0, color: "#e2583e", title: "transportation", label: "교통" },
@@ -24,14 +24,22 @@ function Statistics() {
     { value: 0, color: "#0c4a86", title: "exercise", label: "운동" },
     { value: 0, color: "#7d8f96", title: "etc", label: "기타" },
   ];
-  // 수입
-  const dateIncome = { value: 0 };
 
+  let kindsData = [
+    { value: cost, color: "#b91f32", label: "지출" },
+    {
+      value: income,
+      color: "#53aa00",
+      label: "수입",
+    },
+  ];
+
+  const dateIncome = { value: 0 };
   state.money_list &&
     state.money_list.map((val) => {
       if (val.spending === "지출") {
-        const idx = date.findIndex((v) => v.title === val.kinds);
-        date[idx].value += Number(val.price);
+        const idx = data.findIndex((v) => v.title === val.kinds);
+        data[idx].value += Number(val.price);
       } else {
         dateIncome.value += Number(val.price);
       }
@@ -39,15 +47,17 @@ function Statistics() {
 
   useEffect(() => {
     if (state.money_list) {
-      setCost(date.reduce((sum, item) => sum + Number(item.value), 0));
+      // 지출금, 수입금
+      setCost(data.reduce((sum, item) => sum + Number(item.value), 0));
       setIncome(dateIncome.value);
 
-      const filteDate = date.filter((v) => {
+      const filteDate = data.filter((v) => {
         if (v.value !== 0) return v;
       });
-      setcostDate(filteDate);
+
+      setcostData(filteDate);
     }
-  }, []);
+  }, [cost, income]);
 
   const openModal = () => {
     setModalOpen(true);
@@ -75,14 +85,9 @@ function Statistics() {
           <PieChart
             lineWidth={65}
             onClick={openModal}
-            data={[
-              { value: cost, color: "#b91f32", label: "지출" },
-              {
-                value: income,
-                color: "#53aa00",
-                label: "수입",
-              },
-            ]}
+            data={kindsData.filter((v) => {
+              if (v.value !== 0) return v;
+            })}
             label={(props) => {
               return props.dataEntry.label;
             }}
@@ -93,7 +98,7 @@ function Statistics() {
       <Modal open={modalOpen} confirm={closeModal} close={closeModal}>
         <PieChart
           lineWidth={80}
-          data={costDate}
+          data={costData}
           labelPosition={75}
           label={(props) => {
             return props.dataEntry.label;
