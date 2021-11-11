@@ -1,22 +1,20 @@
 {
   "files": {
-    "main.css": "/financial_ledger/static/css/main.7fd9a77f.chunk.css",
-    "main.js": "/financial_ledger/static/js/main.7aa38d6f.chunk.js",
-    "main.js.map": "/financial_ledger/static/js/main.7aa38d6f.chunk.js.map",
-    "runtime-main.js": "/financial_ledger/static/js/runtime-main.2d1c71b5.js",
-    "runtime-main.js.map": "/financial_ledger/static/js/runtime-main.2d1c71b5.js.map",
+    "main.css": "/financial_ledger/static/css/main.e58f5795.chunk.css",
+    "main.js": "/financial_ledger/static/js/main.b6b12a2b.chunk.js",
+    "main.js.map": "/financial_ledger/static/js/main.b6b12a2b.chunk.js.map",
+    "runtime-main.js": "/financial_ledger/static/js/runtime-main.46070f88.js",
+    "runtime-main.js.map": "/financial_ledger/static/js/runtime-main.46070f88.js.map",
     "static/js/2.fc1f28d0.chunk.js": "/financial_ledger/static/js/2.fc1f28d0.chunk.js",
     "static/js/2.fc1f28d0.chunk.js.map": "/financial_ledger/static/js/2.fc1f28d0.chunk.js.map",
-    "static/js/3.137cd399.chunk.js": "/financial_ledger/static/js/3.137cd399.chunk.js",
-    "static/js/3.137cd399.chunk.js.map": "/financial_ledger/static/js/3.137cd399.chunk.js.map",
     "index.html": "/financial_ledger/index.html",
-    "static/css/main.7fd9a77f.chunk.css.map": "/financial_ledger/static/css/main.7fd9a77f.chunk.css.map",
+    "static/css/main.e58f5795.chunk.css.map": "/financial_ledger/static/css/main.e58f5795.chunk.css.map",
     "static/js/2.fc1f28d0.chunk.js.LICENSE.txt": "/financial_ledger/static/js/2.fc1f28d0.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.2d1c71b5.js",
+    "static/js/runtime-main.46070f88.js",
     "static/js/2.fc1f28d0.chunk.js",
-    "static/css/main.7fd9a77f.chunk.css",
-    "static/js/main.7aa38d6f.chunk.js"
+    "static/css/main.e58f5795.chunk.css",
+    "static/js/main.b6b12a2b.chunk.js"
   ]
 }
