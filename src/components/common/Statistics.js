@@ -35,11 +35,11 @@ function Statistics() {
   ];
 
   const dateIncome = { value: 0 };
-  state.money_list &&
+  state.money_list.length > 0 &&
     state.money_list.map((val) => {
       if (val.spending === "지출") {
         const idx = data.findIndex((v) => v.title === val.kinds);
-        data[idx].value += Number(val.price);
+        if (data[idx]) data[idx].value += Number(val.price);
       } else {
         dateIncome.value += Number(val.price);
       }

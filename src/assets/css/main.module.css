@@ -67,7 +67,7 @@
 }
 .book_list > li > ul > li:first-child {
   position: relative;
-  width: calc(100% - 100px);
+  width: calc(100% - 120px);
   padding-left: 55px;
 }
 .book_list > li > ul > li:first-child > div {
@@ -98,7 +98,7 @@
   font-weight: 500;
 }
 .book_list > li > ul > li:nth-child(2) {
-  width: 100px;
+  width: 120px;
   text-align: right;
   font-size: 0.9rem;
   font-weight: 700;
