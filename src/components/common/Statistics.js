@@ -57,7 +57,7 @@ function Statistics() {
 
       setcostData(filteDate);
     }
-  }, [cost, income]);
+  }, [cost, income, state.money_list]);
 
   const openModal = () => {
     setModalOpen(true);

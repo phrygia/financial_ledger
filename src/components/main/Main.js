@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import Header from "../common/Header";
 import { store } from "../../App";
@@ -54,7 +54,21 @@ function Main() {
   ];
   const history = useHistory();
 
+  useEffect(() => {
+    if (state.money_list.length === 0) {
+      setList(money_list);
+    }
+  }, [state.money_list, list]);
+
   const handleEdit = (val) => {
+    const ifNotExgistData = localStorage.getItem("money_list");
+
+    // 더미데이터를 수정하면 더미데이터를 localStorage에 등록
+    if (ifNotExgistData === null) {
+      localStorage.setItem("money_list", JSON.stringify(state.money_list));
+      dispatch({ type: "ADD_MONEY_IFNO", money_list: state.money_list });
+    }
+
     const Obj = { info: val };
     localStorage.setItem("edit_info", JSON.stringify(Obj));
     dispatch({ type: "EDIT_MONEY_IFNO", edit_info: Obj });
