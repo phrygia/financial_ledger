@@ -8,6 +8,7 @@ import reducer from "./components/reducers/reducer";
 import Pay from "./components/pay/Pay";
 import { initialState } from "./components/reducers/initialState";
 
+// dummy 데이터때문에 기본값 주석
 // localStorage에서 사용자 이름 받아오기
 // const initialState = {
 //   user_name: JSON.parse(localStorage.getItem("userName"))?.name,
@@ -23,7 +24,7 @@ function App() {
   return (
     <store.Provider value={[state, dispatch]}>
       <div className="app">
-        <Router basename={process.env.PUBLIC_URL}>
+        <Router basename="/financial_ledger">
           <Switch>
             <Route path="/" component={Main} exact />
             <Route path="/user" component={User} exact />
