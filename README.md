@@ -1,4 +1,7 @@
 # financial_ledger (react 가계부)
+## 개인프로젝트
+
+![가계부](https://user-images.githubusercontent.com/40693181/170808288-e2a662d3-eab3-4ace-b7ab-35f8e48505e9.jpg)
 
 ## 🛠 사용기술
 
